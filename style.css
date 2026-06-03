@@ -15,9 +15,9 @@
 :root {
   --bg:       #f0ebe0;  /* warm paper background */
   --ink:      #2a2620;  /* near-black ink */
-  --ink-mid:  #6b6458;  /* mid-tone ink */
-  --ink-faint:#b0a898;  /* faint/muted ink */
-  --rule:     #c8bfad;  /* borders and rules */
+  --ink-mid:  #4a4438;  /* mid-tone ink — darker for contrast */
+  --ink-faint:#8a8275;  /* faint/muted ink — darker for contrast */
+  --rule:     #b8af9d;  /* borders and rules — slightly darker */
 }
 
 /* --- Base --- */

@@ -10,9 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    main {
-      padding: 64px 0 80px;
-    }
+    main { padding: 64px 0 80px; }
 
     .page-header {
       display: flex;
@@ -29,7 +27,35 @@
       line-height: 1.6;
     }
 
-    /* Each project: video + info side by side */
+    /* Section headers */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 36px;
+      margin-top: 72px;
+    }
+
+    .section-header:first-of-type { margin-top: 0; }
+
+    .section-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 28px;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+
+    .section-note {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    /* eLearning — alternating layout */
     .video-entry {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -41,18 +67,11 @@
 
     .video-entry:last-of-type {
       border-bottom: 1px solid var(--rule);
-      margin-bottom: 48px;
     }
 
-    /* Flip every other entry so video alternates sides */
-    .video-entry.flip {
-      direction: rtl;
-    }
-    .video-entry.flip > * {
-      direction: ltr;
-    }
+    .video-entry.flip { direction: rtl; }
+    .video-entry.flip > * { direction: ltr; }
 
-    /* 16:9 video embed container */
     .video-wrap {
       position: relative;
       width: 100%;
@@ -98,11 +117,7 @@
       color: var(--ink-mid);
     }
 
-    .video-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+    .video-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
     .video-link {
       display: inline-flex;
@@ -117,17 +132,68 @@
       transition: color 0.15s;
       align-self: flex-start;
     }
-
     .video-link:hover { color: var(--ink); }
 
-    /* To add more videos: duplicate a .video-entry block.
-       Alternate .flip / no-flip to keep the zigzag pattern.
-       Swap in the Vimeo video ID in the iframe src URL. */
+    /* Grid sections */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 48px;
+    }
+
+    .grid-item {}
+
+    .grid-video-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #2a2620;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      margin-bottom: 12px;
+    }
+
+    .grid-video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .grid-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule);
+      gap: 12px;
+    }
+
+    .grid-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 15px;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .grid-client {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
 
     .archive-note {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 72px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
     }
 
     .archive-text {
@@ -135,6 +201,29 @@
       color: var(--ink-faint);
       font-style: italic;
       line-height: 1.6;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .page-header { flex-direction: column; gap: 8px; align-items: flex-start; }
+
+      .video-entry,
+      .video-entry.flip {
+        grid-template-columns: 1fr;
+        direction: ltr;
+        gap: 24px;
+        padding: 32px 0;
+      }
+
+      .video-entry .video-info,
+      .video-entry.flip .video-info { direction: ltr; }
+
+      .video-title { font-size: 18px; }
+
+      .video-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .archive-note { flex-direction: column; gap: 16px; align-items: flex-start; margin-top: 48px; }
+      .section-header { margin-top: 52px; }
     }
   </style>
 </head>
@@ -146,26 +235,29 @@
         <a href="about.html">About</a>
         <a href="animation.html">Animation</a>
         <a href="music.html">Music</a>
-        <a href="photo.html">Photo</a>
         <a href="video.html" class="active">Video</a>
+        <a href="photo.html">Photo</a>
       </nav>
     </header>
 
     <main class="fadein video-main">
-      <span class="page-label">05 — Video</span>
+      <span class="page-label">04 — Video</span>
       <div class="page-header">
         <h1 class="page-title">Video</h1>
         <p class="page-context">Production and direction work<br>via Remarque Creative</p>
       </div>
 
-      <!-- Project 1: Kessler Foundation -->
+      <!-- eLEARNING COURSES -->
+      <div class="section-header">
+        <span class="section-title">eLearning Courses</span>
+        <span class="section-note">Full production, end to end</span>
+      </div>
+
       <div class="video-entry">
         <div class="video-wrap">
-          <iframe
-            src="https://player.vimeo.com/video/746995307?badge=0&autopause=0&player_id=0&app_id=58479"
+          <iframe src="https://player.vimeo.com/video/746995307?badge=0&autopause=0&player_id=0&app_id=58479"
             allow="autoplay; fullscreen; picture-in-picture"
-            title="Kessler Foundation — Understanding Spinal Cord Injury">
-          </iframe>
+            title="Kessler Foundation — Understanding Spinal Cord Injury"></iframe>
         </div>
         <div class="video-info">
           <span class="video-client">Kessler Foundation</span>
@@ -180,14 +272,11 @@
         </div>
       </div>
 
-      <!-- Project 2: Equity Quotient (flipped) -->
       <div class="video-entry flip">
         <div class="video-wrap">
-          <iframe
-            src="https://player.vimeo.com/video/701883151?badge=0&autopause=0&player_id=0&app_id=58479"
+          <iframe src="https://player.vimeo.com/video/701883151?badge=0&autopause=0&player_id=0&app_id=58479"
             allow="autoplay; fullscreen; picture-in-picture"
-            title="Equity Quotient — Genesis of Race and Racism">
-          </iframe>
+            title="Equity Quotient — Genesis of Race and Racism"></iframe>
         </div>
         <div class="video-info">
           <span class="video-client">Equity Quotient</span>
@@ -202,14 +291,11 @@
         </div>
       </div>
 
-      <!-- Project 3: Mount Sinai -->
       <div class="video-entry">
         <div class="video-wrap">
-          <iframe
-            src="https://player.vimeo.com/video/262124868?badge=0&autopause=0&player_id=0&app_id=58479"
+          <iframe src="https://player.vimeo.com/video/262124868?badge=0&autopause=0&player_id=0&app_id=58479"
             allow="autoplay; fullscreen; picture-in-picture"
-            title="Mount Sinai — SexualitySCI">
-          </iframe>
+            title="Mount Sinai — SexualitySCI"></iframe>
         </div>
         <div class="video-info">
           <span class="video-client">Mount Sinai Hospital</span>
@@ -221,6 +307,174 @@
             <span class="tag">Production</span>
           </div>
           <a href="https://www.sexualitysci.org/" target="_blank" class="video-link">View site ↗</a>
+        </div>
+      </div>
+
+      <!-- BRAND VIDEOS -->
+      <div class="section-header">
+        <span class="section-title">Brand Videos</span>
+        <span class="section-note">Commercial and corporate</span>
+      </div>
+
+      <div class="video-grid">
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/252420715?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Bryant University Online CFP Brand Video"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Bryant University Online CFP® Brand Video</span>
+            <span class="grid-client">Bryant University</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/242961426?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="The Javits Center: A Higher Standard"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">A Higher Standard</span>
+            <span class="grid-client">Javits Center</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/216524333?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="NYC Spinal Brand Video"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">NYC Spinal Brand Video</span>
+            <span class="grid-client">NYC Spinal</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/261919371?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Mount Sinai — Intro to Practice"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Intro to Practice</span>
+            <span class="grid-client">Mount Sinai</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MUSIC VIDEOS -->
+      <div class="section-header">
+        <span class="section-title">Music Videos</span>
+        <span class="section-note">Direction and production</span>
+      </div>
+
+      <div class="video-grid">
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://www.youtube.com/embed/6PFaFL4ILNk"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+              title="Music video"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Music Video</span>
+            <span class="grid-client">Direction</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://www.youtube.com/embed/U7Ld352p5Z0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+              title="Music video"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Music Video</span>
+            <span class="grid-client">Direction</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOD VIDEOS -->
+      <div class="section-header">
+        <span class="section-title">Food &amp; Drink</span>
+        <span class="section-note">Editorial and commercial</span>
+      </div>
+
+      <div class="video-grid">
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/220324033?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Pret A Manger: Butternut Squash & Ricotta Mac and Cheese"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Butternut Squash & Ricotta Mac and Cheese</span>
+            <span class="grid-client">Pret A Manger</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/220324248?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Pret A Manger: Burrito Campaign"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Burrito Campaign</span>
+            <span class="grid-client">Pret A Manger</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/231625967?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Nomster's Happy Hummus"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Happy Hummus</span>
+            <span class="grid-client">Nomster Chef</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/231626306?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Nomster's Great Green Guac"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Great Green Guac</span>
+            <span class="grid-client">Nomster Chef</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/212958090?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Cocktail Crate MaBaJa Sour"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">MaBaJa Sour</span>
+            <span class="grid-client">Cocktail Crate</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="grid-video-wrap">
+            <iframe src="https://player.vimeo.com/video/207171333?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Be Mixed Berry Spicy Margarita"></iframe>
+          </div>
+          <div class="grid-caption">
+            <span class="grid-title">Berry Spicy Margarita</span>
+            <span class="grid-client">Be Mixed</span>
+          </div>
         </div>
       </div>
 
