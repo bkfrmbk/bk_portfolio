@@ -18,7 +18,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 52px;
+      margin-bottom: 64px;
     }
 
     .page-context {
@@ -29,64 +29,58 @@
       line-height: 1.6;
     }
 
-    /* Photo grid — 4 columns with two wide items for rhythm */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 3px;
-      margin-bottom: 48px;
+    /* Vertical photo stack */
+    .photo-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      margin-bottom: 64px;
     }
 
     .photo-item {
-      position: relative;
-      overflow: hidden;
-      background: #d8d0c0;
       cursor: pointer;
     }
 
-    /* Wide items span 2 columns */
-    .photo-item.wide {
-      grid-column: span 2;
-    }
-
+    /* Two sizes — full width, or centered narrower */
     .photo-item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
       display: block;
-      aspect-ratio: 1;
-      /* Subtle sepia to match paper aesthetic */
-      filter: sepia(0.08) contrast(1.02);
-      transition: transform 0.4s ease, filter 0.3s ease;
-    }
-
-    .photo-item.wide img {
-      aspect-ratio: 2;
+      filter: sepia(0.06) contrast(1.02);
+      transition: filter 0.3s ease;
     }
 
     .photo-item:hover img {
-      transform: scale(1.03);
-      filter: sepia(0) contrast(1.05);
+      filter: sepia(0) contrast(1.04);
     }
 
-    /* Title overlay — appears on hover */
+    /* Narrow images sit centered at ~60% width */
+    .photo-item.narrow img {
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    /* Caption row below each photo */
     .photo-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 28px 14px 12px;
-      background: linear-gradient(transparent, rgba(20,16,10,0.55));
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(240,235,224,0.85);
-      opacity: 0;
-      transition: opacity 0.25s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule);
     }
 
-    .photo-item:hover .photo-caption {
-      opacity: 1;
+    .photo-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 16px;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+    }
+
+    .photo-num {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
     }
 
     .archive-note {
@@ -175,6 +169,27 @@
     .lightbox-nav:hover { color: #e8e4dc; }
     .lightbox-prev { left: 24px; }
     .lightbox-next { right: 24px; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .page-header {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+        margin-bottom: 48px;
+      }
+
+      .page-context { text-align: left; }
+
+      .photo-stack { gap: 52px; }
+
+      .photo-item.narrow img {
+        width: 100%;
+      }
+
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -197,44 +212,76 @@
         <p class="page-context">4×5 film<br>Selected works</p>
       </div>
 
-      <!-- Photo grid
-           Images are served from your existing bradkorman.co/images/portfolio/art/ folder.
-           To add new photos: copy a .photo-item block, update src and alt/title.
-           To make an image wide: add class="photo-item wide" (spans 2 columns).
-           Keep the data-index values sequential (0, 1, 2...) for lightbox to work. -->
-      <div class="photo-grid" id="photoGrid">
-        <div class="photo-item wide" data-index="0">
-          <img src="https://bradkorman.co/images/wine_print.jpg" alt="Sacrifice" loading="lazy">
-          <span class="photo-caption">Sacrifice</span>
+      <!-- Photo stack — vertical scroll gallery
+           To add a photo: copy a .photo-item block, update src/alt/title/num.
+           Use class="photo-item" for full width, or class="photo-item narrow" for centered ~60% width.
+           Keep data-index values sequential for lightbox navigation. -->
+      <div class="photo-stack" id="photoStack">
+
+        <div class="photo-item" data-index="0">
+          <img src="images/wine_print.jpg" alt="Sacrifice" loading="lazy">
+          <div class="photo-caption">
+            <span class="photo-title">Sacrifice</span>
+            <span class="photo-num">01 / 08</span>
+          </div>
         </div>
-        <div class="photo-item" data-index="1">
-          <img src="https://bradkorman.co/images/skull_print.jpg" alt="Breath" loading="lazy">
-          <span class="photo-caption">Breath</span>
+
+        <div class="photo-item narrow" data-index="1">
+          <img src="images/skull_print.jpg" alt="Breath" loading="lazy">
+          <div class="photo-caption">
+            <span class="photo-title">Breath</span>
+            <span class="photo-num">02 / 08</span>
+          </div>
         </div>
+
         <div class="photo-item" data-index="2">
-          <img src="https://bradkorman.co/images/respite_print.jpg" alt="Respite" loading="lazy">
-          <span class="photo-caption">Respite</span>
+          <img src="images/respite_print.jpg" alt="Respite" loading="lazy">
+          <div class="photo-caption">
+            <span class="photo-title">Respite</span>
+            <span class="photo-num">03 / 08</span>
+          </div>
         </div>
-        <div class="photo-item" data-index="3">
-          <img src="https://bradkorman.co/images/sight_print.jpg" alt="Sight" loading="lazy">
-          <span class="photo-caption">Sight</span>
+
+        <div class="photo-item narrow" data-index="3">
+          <img src="images/sight_print.jpg" alt="Sight" loading="lazy">
+          <div class="photo-caption">
+            <span class="photo-title">Sight</span>
+            <span class="photo-num">04 / 08</span>
+          </div>
         </div>
+
         <div class="photo-item" data-index="4">
-          <img src="https://bradkorman.co/images/stress_print.jpg" alt="Stress" loading="lazy">
-          <span class="photo-caption">Stress</span>
+          <img src="images/stress_print.jpg" alt="Stress" loading="lazy">
+          <div class="photo-caption">
+            <span class="photo-title">Stress</span>
+            <span class="photo-num">05 / 08</span>
+          </div>
         </div>
-        <div class="photo-item wide" data-index="5">
-          <img src="https://bradkorman.co/images/web_print.jpg" alt="Web" loading="lazy">
-          <span class="photo-caption">Web</span>
+
+        <div class="photo-item narrow" data-index="5">
+          <img src="images/web_print.jpg" alt="Web" loading="lazy">
+          <div class="photo-caption">
+            <span class="photo-title">Web</span>
+            <span class="photo-num">06 / 08</span>
+          </div>
         </div>
+
         <div class="photo-item" data-index="6">
-          <img src="https://bradkorman.co/images/appetite_print.jpg" alt="Appetite" loading="lazy">
-          <span class="photo-caption">Appetite</span>
+          <img src="images/appetite_print.jpg" alt="Appetite" loading="lazy">
+          <div class="photo-caption">
+            <span class="photo-title">Appetite</span>
+            <span class="photo-num">07 / 08</span>
+          </div>
         </div>
-        <div class="photo-item" data-index="7">
-          <img src="https://bradkorman.co/images/loss_print.jpg" alt="Loss" loading="lazy">
-          <span class="photo-caption">Loss</span>
+
+        <div class="photo-item narrow" data-index="7">
+          <img src="images/loss_print.jpg" alt="Loss" loading="lazy">
+          <div class="photo-caption">
+            <span class="photo-title">Loss</span>
+            <span class="photo-num">08 / 08</span>
+          </div>
         </div>
+
       </div>
 
       <div class="archive-note">
@@ -264,16 +311,16 @@
   </div>
 
   <script>
-    // Photo data — keep this in sync with the grid above
+    // Photo data — keep in sync with the stack above
     const photos = [
-      { src: 'https://bradkorman.co/images/wine_print.jpg',    title: 'Sacrifice' },
-      { src: 'https://bradkorman.co/images/skull_print.jpg',   title: 'Breath'    },
-      { src: 'https://bradkorman.co/images/respite_print.jpg', title: 'Respite'   },
-      { src: 'https://bradkorman.co/images/sight_print.jpg',   title: 'Sight'     },
-      { src: 'https://bradkorman.co/images/stress_print.jpg',  title: 'Stress'    },
-      { src: 'https://bradkorman.co/images/web_print.jpg',     title: 'Web'       },
-      { src: 'https://bradkorman.co/images/appetite_print.jpg',title: 'Appetite'  },
-      { src: 'https://bradkorman.co/images/loss_print.jpg',    title: 'Loss'      },
+      { src: 'images/wine_print.jpg',     title: 'Sacrifice' },
+      { src: 'images/skull_print.jpg',    title: 'Breath'    },
+      { src: 'images/respite_print.jpg',  title: 'Respite'   },
+      { src: 'images/sight_print.jpg',    title: 'Sight'     },
+      { src: 'images/stress_print.jpg',   title: 'Stress'    },
+      { src: 'images/web_print.jpg',      title: 'Web'       },
+      { src: 'images/appetite_print.jpg', title: 'Appetite'  },
+      { src: 'images/loss_print.jpg',     title: 'Loss'      },
     ];
 
     let current = 0;
@@ -303,20 +350,16 @@
       lbTitle.textContent = photos[current].title;
     }
 
-    // Open on grid click
     document.querySelectorAll('.photo-item').forEach(item => {
       item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
     });
 
-    // Close / navigate controls
     document.getElementById('lbClose').addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
     document.getElementById('lbPrev').addEventListener('click',  e => { e.stopPropagation(); showPrev(); });
     document.getElementById('lbNext').addEventListener('click',  e => { e.stopPropagation(); showNext(); });
 
-    // Click backdrop to close
     lb.addEventListener('click', closeLightbox);
 
-    // Keyboard navigation
     document.addEventListener('keydown', e => {
       if (!lb.classList.contains('open')) return;
       if (e.key === 'ArrowRight') showNext();

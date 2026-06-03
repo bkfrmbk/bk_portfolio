@@ -41,21 +41,7 @@ body::before {
   z-index: 998;
 }
 
-/* Subtle ruled-paper lines */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    180deg,
-    transparent 0px,
-    transparent 27px,
-    rgba(160,145,120,0.09) 27px,
-    rgba(160,145,120,0.09) 28px
-  );
-  pointer-events: none;
-  z-index: 997;
-}
+/* Ruled lines removed */
 
 /* --- Page wrapper --- */
 .page {
