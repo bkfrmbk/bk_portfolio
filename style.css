@@ -368,6 +368,10 @@ footer {
     gap: 40px;
   }
 
+  /* On mobile: Spotify embed (second child) appears first, text second */
+  .content-layout > *:first-child { order: 2; }
+  .content-layout > *:last-child  { order: 1; }
+
   .more-section {
     flex-direction: column;
     gap: 16px;
