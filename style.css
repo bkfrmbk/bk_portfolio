@@ -1,0 +1,208 @@
+/* ============================================================
+   Brad Korman — bradkorman.co
+   Shared stylesheet for all pages
+   Fonts: Special Elite (display), Courier Prime (body)
+   ============================================================ */
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Variables --- */
+:root {
+  --bg:       #f0ebe0;  /* warm paper background */
+  --ink:      #2a2620;  /* near-black ink */
+  --ink-mid:  #6b6458;  /* mid-tone ink */
+  --ink-faint:#b0a898;  /* faint/muted ink */
+  --rule:     #c8bfad;  /* borders and rules */
+}
+
+/* --- Base --- */
+html, body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Courier Prime', monospace;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* Paper grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='6' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23paper)' opacity='0.09'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  pointer-events: none;
+  z-index: 998;
+}
+
+/* Subtle ruled-paper lines */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 27px,
+    rgba(160,145,120,0.09) 27px,
+    rgba(160,145,120,0.09) 28px
+  );
+  pointer-events: none;
+  z-index: 997;
+}
+
+/* --- Page wrapper --- */
+.page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 0 52px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* --- Header --- */
+header {
+  padding: 36px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-id {
+  font-family: 'Special Elite', cursive;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* Top nav (interior pages) */
+nav.top-nav {
+  display: flex;
+  gap: 28px;
+}
+
+nav.top-nav a {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+
+nav.top-nav a:hover    { color: var(--ink-mid); }
+nav.top-nav a.active   { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 1px; }
+
+/* Header tag (homepage) */
+.header-tag {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* --- Footer --- */
+footer {
+  padding: 20px 0 32px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+
+.footer-links a:hover { color: var(--ink); }
+
+/* --- Shared typography --- */
+.page-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  display: block;
+}
+
+.page-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 48px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+
+/* --- Shared components --- */
+
+/* Tags */
+.tag {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  border: 1px solid var(--rule);
+  padding: 3px 8px;
+  font-family: 'Courier Prime', monospace;
+}
+
+/* External link with underline */
+.visit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.visit-link:hover {
+  color: var(--ink-mid);
+  border-color: var(--ink-mid);
+}
+
+/* Page fade-in animation */
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fadein {
+  animation: fadein 0.35s ease-out forwards;
+}

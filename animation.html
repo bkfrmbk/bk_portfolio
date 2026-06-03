@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Breadlums — animated series by Brad Korman, set in New Grain City.">
+  <title>Brad Korman — Animation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    main {
+      padding: 64px 0 80px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 48px;
+    }
+
+    /* Project title row */
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 36px;
+    }
+
+    .project-name {
+      font-family: 'Special Elite', cursive;
+      font-size: 32px;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+
+    .project-status {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
+
+    /* Two-column layout: info left, video right */
+    .video-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 52px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .project-desc p + p { margin-top: 16px; }
+    .project-desc em { font-style: italic; color: var(--ink-mid); }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    /* Vertical (9:16) video embed container */
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 177.78%; /* 9:16 aspect ratio */
+      background: #2a2620;
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-caption {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--ink-faint);
+      margin-top: 10px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* To add more clips, duplicate the .video-layout block above.
+       Just swap in the new Vimeo video ID in the iframe src. */
+
+    .more-section {
+      border-top: 1px solid var(--rule);
+      padding-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .more-text {
+      font-size: 12px;
+      color: var(--ink-faint);
+      font-style: italic;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a href="index.html" class="site-id">Brad Korman</a>
+      <nav class="top-nav" aria-label="Site navigation">
+        <a href="about.html">About</a>
+        <a href="animation.html" class="active">Animation</a>
+        <a href="music.html">Music</a>
+        <a href="photo.html">Photo</a>
+        <a href="video.html">Video</a>
+      </nav>
+    </header>
+
+    <main class="fadein">
+      <div class="page-header">
+        <span class="page-label" style="margin-bottom:0;">02 — Animation</span>
+      </div>
+
+      <h1 class="page-title" style="margin-bottom: 48px;">Animation</h1>
+
+      <!-- Breadlums -->
+      <div class="project-header">
+        <span class="project-name">Breadlums</span>
+        <span class="project-status">In production</span>
+      </div>
+
+      <div class="video-layout">
+        <div>
+          <div class="project-desc">
+            <p>An adult animated crime dramedy set in New Grain City — a city where all life is made of bread, and the streets run on flour and corruption.</p>
+            <p>Written, directed, and produced by Brad Korman. Vertical format, built for social. Currently in production on the pilot.</p>
+          </div>
+
+          <div class="project-tags">
+            <span class="tag">Animation</span>
+            <span class="tag">Crime</span>
+            <span class="tag">Comedy</span>
+            <span class="tag">Drama</span>
+            <span class="tag">Vertical Format</span>
+            <span class="tag">In Production</span>
+          </div>
+
+          <a href="https://breadlums.com" target="_blank" class="visit-link">Visit breadlums.com ↗</a>
+        </div>
+
+        <div>
+          <!-- Vimeo embed — Scene 1
+               To add more clips: duplicate this block and change the video ID in the src URL -->
+          <div class="video-wrap">
+            <iframe
+              src="https://player.vimeo.com/video/1188557673?h=fc3af0ffd4&badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              title="Breadlums — Scene 1">
+            </iframe>
+          </div>
+          <p class="video-caption">Scene 1 — New Grain City</p>
+        </div>
+      </div>
+
+      <div class="more-section">
+        <p class="more-text">More clips and scenes added as production continues.<br>Follow the full project at breadlums.com.</p>
+        <a href="https://breadlums.com" target="_blank" class="visit-link">breadlums.com ↗</a>
+      </div>
+    </main>
+
+    <footer>
+      <span class="footer-left">© 2026 Brad Korman</span>
+      <div class="footer-links">
+        <a href="https://vimeo.com/remarquecreative" target="_blank">Vimeo</a>
+        <a href="https://www.linkedin.com/in/brad-korman/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/MadNeat-O" target="_blank">GitHub</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

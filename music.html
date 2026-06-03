@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Shashniks From Bagoon — family band by Brad Korman. Debut album out now.">
+  <title>Brad Korman — Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    main {
+      padding: 64px 0 80px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 36px;
+    }
+
+    .project-name {
+      font-family: 'Special Elite', cursive;
+      font-size: 28px;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+
+    .project-status {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+    }
+
+    /* Two-column layout: info left, Spotify right */
+    .content-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 56px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .project-desc p + p { margin-top: 16px; }
+    .project-desc em { font-style: italic; color: var(--ink-mid); }
+
+    .stream-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .stream-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    /* Streaming platform buttons */
+    .stream-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--rule);
+      padding: 10px 16px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .stream-link:hover {
+      border-color: var(--ink-mid);
+      color: var(--ink-mid);
+    }
+
+    .stream-link .link-arrow {
+      margin-left: auto;
+      color: var(--ink-faint);
+      font-size: 11px;
+    }
+
+    /* Spotify embed column */
+    .spotify-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .spotify-wrap {
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+
+    .album-note {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      font-style: italic;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .more-section {
+      border-top: 1px solid var(--rule);
+      padding-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .more-text {
+      font-size: 12px;
+      color: var(--ink-faint);
+      font-style: italic;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a href="index.html" class="site-id">Brad Korman</a>
+      <nav class="top-nav" aria-label="Site navigation">
+        <a href="about.html">About</a>
+        <a href="animation.html">Animation</a>
+        <a href="music.html" class="active">Music</a>
+        <a href="photo.html">Photo</a>
+        <a href="video.html">Video</a>
+      </nav>
+    </header>
+
+    <main class="fadein">
+      <span class="page-label">03 — Music</span>
+      <h1 class="page-title" style="margin-bottom: 48px;">Music</h1>
+
+      <div class="project-header">
+        <span class="project-name">The Shashniks From Bagoon</span>
+        <span class="project-status">Debut album out now</span>
+      </div>
+
+      <div class="content-layout">
+        <!-- Left: description + streaming links -->
+        <div>
+          <div class="project-desc">
+            <p>A family band. The debut album is called <em>"The WHAT from WHERE?!"</em> — which is also the correct response to learning a family band exists.</p>
+            <p>Available on all major streaming platforms. Full band info and lore at theshashniks.com.</p>
+          </div>
+
+          <p class="stream-label">Listen on</p>
+          <div class="stream-links">
+            <a href="https://open.spotify.com/artist/6OG6WhGCvE1E6Muc3ZsvR2" target="_blank" class="stream-link">
+              Spotify
+              <span class="link-arrow">↗</span>
+            </a>
+            <a href="https://music.apple.com/us/artist/the-shashniks-from-bagoon/1738287698" target="_blank" class="stream-link">
+              Apple Music
+              <span class="link-arrow">↗</span>
+            </a>
+          </div>
+
+          <a href="https://theshashniks.com" target="_blank" class="visit-link">Visit theshashniks.com ↗</a>
+        </div>
+
+        <!-- Right: Spotify embed -->
+        <div>
+          <p class="spotify-label">Now playing</p>
+          <div class="spotify-wrap">
+            <iframe
+              src="https://open.spotify.com/embed/artist/6OG6WhGCvE1E6Muc3ZsvR2?utm_source=generator&theme=0"
+              width="100%"
+              height="380"
+              frameborder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="The Shashniks From Bagoon on Spotify">
+            </iframe>
+          </div>
+          <p class="album-note">"The WHAT from WHERE?!" — debut album</p>
+        </div>
+      </div>
+
+      <div class="more-section">
+        <p class="more-text">More music in the works.<br>Follow along at theshashniks.com.</p>
+        <a href="https://theshashniks.com" target="_blank" class="visit-link">theshashniks.com ↗</a>
+      </div>
+    </main>
+
+    <footer>
+      <span class="footer-left">© 2026 Brad Korman</span>
+      <div class="footer-links">
+        <a href="https://vimeo.com/remarquecreative" target="_blank">Vimeo</a>
+        <a href="https://www.linkedin.com/in/brad-korman/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/MadNeat-O" target="_blank">GitHub</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

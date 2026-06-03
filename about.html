@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Brad Korman — multidisciplinary creative based in Brooklyn, NY.">
+  <title>Brad Korman — About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    main {
+      padding: 64px 0 80px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* Photo block — swap img tag in when you have a headshot */
+    .photo-block {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: #e0d9cc;
+      border: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 36px; /* align with right column top */
+    }
+
+    /* Dashed inner border for placeholder feel */
+    .photo-block::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed var(--ink-faint);
+      opacity: 0.4;
+    }
+
+    .photo-placeholder-label {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      opacity: 0.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* To add your headshot later, replace .photo-block contents with:
+       <img src="images/headshot.jpg" alt="Brad Korman"
+            style="width:100%; height:100%; object-fit:cover; display:block;">
+    */
+
+    /* Bio text */
+    .bio {
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 56px;
+    }
+
+    .bio p + p { margin-top: 18px; }
+
+    .bio em {
+      font-style: italic;
+      color: var(--ink-mid);
+    }
+
+    /* Projects list */
+    .projects-section {
+      position: relative;
+    }
+
+    /* Coffee stain — purely decorative */
+    .stain {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid rgba(160,130,80,0.12);
+      box-shadow: inset 0 0 0 6px rgba(160,130,80,0.06);
+      position: absolute;
+      top: -12px;
+      right: 0;
+      pointer-events: none;
+    }
+
+    .projects-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .project-list {
+      border-top: 1px solid var(--rule);
+    }
+
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      transition: padding-left 0.15s;
+    }
+
+    .project-item:hover { padding-left: 4px; }
+    .project-item:hover .project-name { color: var(--ink-mid); }
+    .project-item:hover .project-arrow { opacity: 1; }
+
+    .project-name {
+      font-family: 'Special Elite', cursive;
+      font-size: 17px;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 2px;
+      transition: color 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .project-desc {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+      display: block;
+    }
+
+    .project-arrow {
+      font-size: 12px;
+      color: var(--ink-mid);
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a href="index.html" class="site-id">Brad Korman</a>
+      <nav class="top-nav" aria-label="Site navigation">
+        <a href="about.html" class="active">About</a>
+        <a href="animation.html">Animation</a>
+        <a href="music.html">Music</a>
+        <a href="photo.html">Photo</a>
+        <a href="video.html">Video</a>
+      </nav>
+    </header>
+
+    <main class="fadein">
+      <!-- Left column: label, name, photo -->
+      <div>
+        <span class="page-label">01 — About</span>
+        <h1 class="page-title">Brad<br>Korman</h1>
+        <div class="photo-block" aria-label="Photo coming soon">
+          <span class="photo-placeholder-label">Photo — TK</span>
+        </div>
+      </div>
+
+      <!-- Right column: bio + project list -->
+      <div>
+        <div class="bio">
+          <p>I'm a multidisciplinary creative based in Brooklyn, NY. I write, produce, animate, make music, take photos, and probably do other stuff too.</p>
+          <p>I'm currently writing and producing <em>Breadlums</em> — an animated series set in New Grain City, where all life is made of bread.</p>
+          <p>I have a family band called <em>The Shashniks From Bagoon</em> with a debut album, <em>"The WHAT from WHERE?!"</em></p>
+          <p>I run an eLearning consulting firm called <em>Remarque Creative</em>.</p>
+          <p>Sometimes I take photos too.</p>
+        </div>
+
+        <div class="projects-section">
+          <div class="stain" aria-hidden="true"></div>
+          <p class="projects-label">Work</p>
+          <div class="project-list">
+            <a href="animation.html" class="project-item">
+              <div>
+                <span class="project-name">Breadlums</span>
+                <span class="project-desc">Animated series — in production</span>
+              </div>
+              <span class="project-arrow">↗</span>
+            </a>
+            <a href="music.html" class="project-item">
+              <div>
+                <span class="project-name">The Shashniks From Bagoon</span>
+                <span class="project-desc">Family band — debut album out now</span>
+              </div>
+              <span class="project-arrow">↗</span>
+            </a>
+            <a href="https://remarque-creative.com" target="_blank" class="project-item">
+              <div>
+                <span class="project-name">Remarque Creative</span>
+                <span class="project-desc">eLearning consulting firm</span>
+              </div>
+              <span class="project-arrow">↗</span>
+            </a>
+            <a href="photo.html" class="project-item">
+              <div>
+                <span class="project-name">Photography</span>
+                <span class="project-desc">Large format — selected works</span>
+              </div>
+              <span class="project-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span class="footer-left">© 2026 Brad Korman</span>
+      <div class="footer-links">
+        <a href="https://vimeo.com/remarquecreative" target="_blank">Vimeo</a>
+        <a href="https://www.linkedin.com/in/brad-korman/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/MadNeat-O" target="_blank">GitHub</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
