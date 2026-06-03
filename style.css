@@ -206,3 +206,256 @@ footer {
 .fadein {
   animation: fadein 0.35s ease-out forwards;
 }
+
+/* ============================================================
+   RESPONSIVE — Mobile styles
+   Breakpoint: 768px and below
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* --- Page padding --- */
+  .page {
+    padding: 0 24px;
+  }
+
+  /* --- Header --- */
+  header {
+    padding: 24px 0 16px;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  /* Nav wraps and uses smaller text */
+  nav.top-nav {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  nav.top-nav a {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  /* --- Page title --- */
+  .page-title {
+    font-size: 36px;
+  }
+
+  /* --- Footer --- */
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 0 28px;
+  }
+
+  .footer-links {
+    gap: 16px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Homepage (index.html)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* Stack two columns */
+  main.home-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 48px 0 60px;
+  }
+
+  /* Scale down the big name */
+  .headline {
+    font-size: clamp(52px, 16vw, 80px);
+    margin-bottom: 24px;
+  }
+
+  .tagline {
+    font-size: 13px;
+    max-width: 100%;
+  }
+
+  /* Nav list tighter on mobile */
+  .nav-list a {
+    padding: 16px 0;
+  }
+
+  .nav-label {
+    font-size: 24px;
+  }
+
+  .nav-desc {
+    display: none; /* hide side hints on small screens */
+  }
+
+  /* Hide stamp on mobile */
+  .stamp {
+    display: none;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — About (about.html)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* Stack two columns */
+  main.about-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 48px 0 60px;
+  }
+
+  /* Photo block shorter on mobile */
+  .photo-block {
+    aspect-ratio: 4 / 3;
+    margin-top: 0;
+  }
+
+  .bio {
+    margin-bottom: 40px;
+  }
+
+  /* Hide coffee stain on mobile */
+  .stain {
+    display: none;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Animation (animation.html)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  main.animation-main {
+    padding: 48px 0 60px;
+  }
+
+  /* Stack info + video vertically */
+  .video-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Vertical video: cap the height so it doesn't take the whole screen */
+  .video-wrap-vertical {
+    padding-top: 0;
+    height: 480px;
+  }
+
+  .project-header {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+
+  .project-name {
+    font-size: 26px;
+  }
+
+  .more-section {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Music (music.html)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  main.music-main {
+    padding: 48px 0 60px;
+  }
+
+  .content-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .more-section {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — Photo (photo.html)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  main.photo-main {
+    padding: 48px 0 60px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .page-context {
+    text-align: left;
+  }
+
+  /* 2-column grid on mobile */
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  /* Wide items still span 2 on mobile (works fine at 2-col) */
+  .photo-item.wide {
+    grid-column: span 2;
+  }
+
+  /* Lightbox nav arrows closer to center on small screens */
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+}
+
+/* ============================================================
+   RESPONSIVE — Video (video.html)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  main.video-main {
+    padding: 48px 0 60px;
+  }
+
+  /* Stack video entries, disable the flip alternation */
+  .video-entry,
+  .video-entry.flip {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 24px;
+    padding: 32px 0;
+  }
+
+  .video-entry .video-info,
+  .video-entry.flip .video-info {
+    direction: ltr;
+  }
+
+  .video-title {
+    font-size: 18px;
+  }
+
+  .archive-note {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
