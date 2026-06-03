@@ -37,13 +37,15 @@
       text-transform: uppercase;
     }
 
-    /* Two-column layout: info left, Spotify right */
-    .content-layout {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 60px;
-      align-items: start;
-      margin-bottom: 56px;
+    /* Two-column layout: info left, Spotify right — desktop only */
+    @media (min-width: 769px) {
+      .content-layout {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 60px;
+        align-items: start;
+        margin-bottom: 56px;
+      }
     }
 
     .project-desc {

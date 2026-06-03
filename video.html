@@ -55,22 +55,24 @@
       font-style: italic;
     }
 
-    /* eLearning — alternating layout */
-    .video-entry {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 52px;
-      align-items: start;
-      padding: 40px 0;
-      border-top: 1px solid var(--rule);
-    }
+    /* eLearning — alternating layout (desktop only) */
+    @media (min-width: 769px) {
+      .video-entry {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 52px;
+        align-items: start;
+        padding: 40px 0;
+        border-top: 1px solid var(--rule);
+      }
 
-    .video-entry:last-of-type {
-      border-bottom: 1px solid var(--rule);
-    }
+      .video-entry:last-of-type {
+        border-bottom: 1px solid var(--rule);
+      }
 
-    .video-entry.flip { direction: rtl; }
-    .video-entry.flip > * { direction: ltr; }
+      .video-entry.flip { direction: rtl; }
+      .video-entry.flip > * { direction: ltr; }
+    }
 
     .video-wrap {
       position: relative;
@@ -134,11 +136,13 @@
     }
     .video-link:hover { color: var(--ink); }
 
-    /* Grid sections */
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px 48px;
+    /* Grid sections (desktop only) */
+    @media (min-width: 769px) {
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 48px;
+      }
     }
 
     .grid-item {}
@@ -209,18 +213,44 @@
 
       .video-entry,
       .video-entry.flip {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         direction: ltr;
         gap: 24px;
         padding: 32px 0;
+        border-top: 1px solid var(--rule);
+        min-width: 0;
       }
 
-      .video-entry .video-info,
-      .video-entry.flip .video-info { direction: ltr; }
+      .video-entry:last-of-type { border-bottom: 1px solid var(--rule); }
+
+      .video-entry > *,
+      .video-entry.flip > * {
+        direction: ltr;
+        width: 100%;
+        min-width: 0;
+      }
 
       .video-title { font-size: 18px; }
 
-      .video-grid { grid-template-columns: 1fr; gap: 40px; }
+      .video-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .video-grid > * {
+        width: 100%;
+        min-width: 0;
+      }
+
+      /* Long titles wrap properly */
+      .grid-caption {
+        flex-wrap: wrap;
+        gap: 6px 12px;
+      }
+
+      .grid-title { font-size: 14px; }
 
       .archive-note { flex-direction: column; gap: 16px; align-items: flex-start; margin-top: 48px; }
       .section-header { margin-top: 52px; }
@@ -487,7 +517,6 @@
     <footer>
       <span class="footer-left">© 2026 Brad Korman</span>
       <div class="footer-links">
-        <a href="https://vimeo.com/remarquecreative" target="_blank">Vimeo</a>
         <a href="https://www.linkedin.com/in/brad-korman/" target="_blank">LinkedIn</a>
         <a href="https://www.instagram.com/bkfrmbk/" target="_blank">Instagram</a>
       </div>

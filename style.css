@@ -28,6 +28,7 @@ html, body {
   font-family: 'Courier Prime', monospace;
   font-size: 14px;
   line-height: 1.75;
+  overflow-x: hidden;
 }
 
 /* Paper grain texture overlay */
@@ -326,8 +327,15 @@ footer {
 
   /* Stack info + video vertically */
   .video-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 32px;
+    min-width: 0;
+  }
+
+  .video-layout > * {
+    width: 100%;
+    min-width: 0;
   }
 
   /* Vertical video: cap the height so it doesn't take the whole screen */
@@ -364,8 +372,15 @@ footer {
   }
 
   .content-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
+    min-width: 0;
+  }
+
+  .content-layout > * {
+    min-width: 0;
+    width: 100%;
   }
 
   /* On mobile: Spotify embed (second child) appears first, text second */

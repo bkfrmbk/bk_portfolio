@@ -45,13 +45,15 @@
       text-transform: uppercase;
     }
 
-    /* Two-column layout: info left, video right */
-    .video-layout {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 52px;
-      align-items: start;
-      margin-bottom: 64px;
+    /* Two-column layout: info left, video right — desktop only */
+    @media (min-width: 769px) {
+      .video-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 52px;
+        align-items: start;
+        margin-bottom: 64px;
+      }
     }
 
     .project-desc {
@@ -185,7 +187,6 @@
     <footer>
       <span class="footer-left">© 2026 Brad Korman</span>
       <div class="footer-links">
-        <a href="https://vimeo.com/remarquecreative" target="_blank">Vimeo</a>
         <a href="https://www.linkedin.com/in/brad-korman/" target="_blank">LinkedIn</a>
         <a href="https://www.instagram.com/bkfrmbk/" target="_blank">Instagram</a>
       </div>
